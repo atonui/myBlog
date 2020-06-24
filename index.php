@@ -72,7 +72,7 @@ if (mysqli_num_rows($results) < 1) {
                                     <a href="/cms/post/<?php echo $post_id; ?>" class="img"
                                        style="background-image: url(images/<?php echo $post_image ?>);"></a>
                                     <div class="text pt-4">
-                                        <h3 class="mb-4"><a href="post/<?php echo $post_id; ?>"><?php echo $post_title ?></a></h3>
+                                        <h3 class="mb-4"><a href="/cms/post/<?php echo $post_id; ?>"><?php echo $post_title ?></a></h3>
                                         <p class="mb-4"><?php echo $post_content ?></p>
                                         <div class="author mb-4 d-flex align-items-center">
                                             <a href="#" class="img"
@@ -186,7 +186,7 @@ if (mysqli_num_rows($results) < 1) {
                         <div class="block-21 mb-4 d-flex">
                             <a class="blog-img mr-4" style="background-image: url(images/<?php echo $post_image;?>);"></a>
                             <div class="text">
-                                <h3 class="heading"><a href="#"><?php echo $post_title;?></a></h3>
+                                <h3 class="heading"><a href="/cms/post/<?php echo $post_id; ?>"><?php echo $post_title;?></a></h3>
                                 <div class="meta">
                                     <div><span class="icon-calendar"></span> <?php echo date("F jS, Y", strtotime($post_date))?></div>
                                     <div><a href="author_posts/<?php echo $post_author_id; ?>"><span class="icon-person"></span><?php echo $post_author;?></a></div>

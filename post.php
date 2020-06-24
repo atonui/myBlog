@@ -43,7 +43,7 @@ include 'admin/functions.php';
                                         <a href="single.html" class="img"
                                            style="background-image: url(/cms/images/<?php echo $post_image ?>);"></a>
                                         <div class="text pt-4">
-                                            <h3 class="mb-4"><a href="#"><?php echo $post_title ?></a></h3>
+                                            <h3 class="mb-4"><a href="/cms/post/<?php echo $post_id; ?>"><?php echo $post_title ?></a></h3>
                                             <div class="author mb-4 d-flex align-items-center">
                                                 <a href="#" class="img"
                                                    style="background-image: url(/cms/images/<?php echo $author_image ?>);"></a>
@@ -69,21 +69,6 @@ include 'admin/functions.php';
                     </div>
                 </div>
             </div>
-            <!--            <div class="row">-->
-            <!--                <div class="col text-center text-md-left">-->
-            <!--                    <div class="block-27">-->
-            <!--                        <ul>-->
-            <!--                            <li><a href="#">&lt;</a></li>-->
-            <!--                            <li class="active"><span>1</span></li>-->
-            <!--                            <li><a href="#">2</a></li>-->
-            <!--                            <li><a href="#">3</a></li>-->
-            <!--                            <li><a href="#">4</a></li>-->
-            <!--                            <li><a href="#">5</a></li>-->
-            <!--                            <li><a href="#">&gt;</a></li>-->
-            <!--                        </ul>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
     </section>
 </div><!-- END COLORLIB-MAIN -->
 </div><!-- END COLORLIB-PAGE -->

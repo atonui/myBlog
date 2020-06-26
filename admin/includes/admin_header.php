@@ -7,8 +7,10 @@ include 'functions.php';
 if (isset($_SESSION['user_role'])){
     $role = $_SESSION['user_role'];
     if ($role == 'subscriber') {
-        header('location:../index.php');
+        header('location:../index');
     }
+} else{
+    header('location:../index');
 }
 
 //to add logic of allowing only administrators to login here

@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="/cms/css/flaticon.css">
     <link rel="stylesheet" href="/cms/css/icomoon.css">
     <link rel="stylesheet" href="/cms/css/style.css">
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div id="colorlib-page">
@@ -70,6 +69,7 @@
                         <button type="submit" class="icon btn btn-outline"><span class="icon-paper-plane"></span></button>
                     </div>
                 </form>
+                <a href="/cms/login">Login</a>
             </div>
             <p class="pfooter">
                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>

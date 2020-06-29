@@ -69,8 +69,8 @@
                         <button type="submit" class="icon btn btn-outline"><span class="icon-paper-plane"></span></button>
                     </div>
                 </form>
-                <a href="/cms/login">Login</a>
             </div>
+            <a href="/cms/login"><span class="text-info">Login</span></a>
             <p class="pfooter">
                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                 All rights reserved | by <a href="https://kibetkoech.com" target="_blank">kibetkoech.com</a>

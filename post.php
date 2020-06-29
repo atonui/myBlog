@@ -96,25 +96,66 @@ include 'admin/functions.php';
                         <h6>Leave us a comment below...</h6>
                         <div class="row block-9">
                             <div class="col-lg-12">
-                                <form action="/cms/post/<?php echo $_GET['p_id']?>" class="bg-light p-5 contact-form" method="post">
+                                <form action="/cms/post/<?php echo $_GET['p_id'] ?>" class="bg-light p-5 contact-form"
+                                      method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Name" name="comment_author" required>
+                                        <input type="text" class="form-control" placeholder="Your Name"
+                                               name="comment_author" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Email" name="comment_email" required>
+                                        <input type="text" class="form-control" placeholder="Your Email"
+                                               name="comment_email" required>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="comment_content" id="" cols="30" rows="7" class="form-control" placeholder="Comment"></textarea>
+                                        <textarea name="comment_content" id="" cols="30" rows="7" class="form-control"
+                                                  placeholder="Comment"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary py-3 px-5" name="create_comment">Submit</button>
+                                    <button type="submit" class="btn btn-primary py-3 px-5" name="create_comment">
+                                        Submit
+                                    </button>
                                 </form>
 
                             </div>
 
                         </div>
-                        <!--                    End Comments-->
+                        <hr>
+                        <!--                    End Commenting feature-->
+<!--                        Begin comments-->
+                        <?php
+                        if (isset($_GET['p_id'])) {
+                            $post_id = $_GET['p_id'];
+
+                            $sql = "SELECT * FROM comments WHERE comment_post_id = $post_id AND comment_status = 'Approved' ORDER BY comment_id DESC ";
+
+                            $results = mysqli_query($connection, $sql);
+                            confirmQuery($results);
+
+                            while ($row = mysqli_fetch_assoc($results)) {
+                                $comment_author = $row['comment_author'];
+                                $comment_content = $row['comment_content'];
+                                $comment_date = $row['comment_date'];
+
+                                ?>
+
+                                <!-- Comment -->
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><?php echo $comment_author ?>
+                                            <small><?php echo date("F jS, Y", strtotime($comment_date)) ?></small>
+                                        </h6>
+
+                                        <?php echo $comment_content; ?>
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <?php
+                            }
+                        }
+                        ?>
                     </div>
-                </div>
+<!--                    End comments-->
+                    </div>
         </section>
     </div><!-- END COLORLIB-MAIN -->
     </div><!-- END COLORLIB-PAGE -->

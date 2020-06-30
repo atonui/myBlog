@@ -1,7 +1,5 @@
 <?php
 include 'includes/header.php';
-include 'includes/db.php';
-include 'admin/functions.php';
 ?>
     <div id="colorlib-main">
         <section class="ftco-section ftco-no-pt ftco-no-pb">

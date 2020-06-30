@@ -1,7 +1,5 @@
 <?php
-require 'includes/db.php';
 include 'includes/header.php';
-include 'admin/functions.php';
 
 $username_err = $password_err = '';
 

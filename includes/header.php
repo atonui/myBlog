@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include './admin/functions.php';
+require_once 'db.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,16 +61,28 @@
             </ul>
         </nav>
 
+        <?php
+            if (isset($_POST['newsletter_submit'])) {
+                if (!empty($_POST['newsletter_email'])) {
+                    $newsletter_email = cleanData($_POST['newsletter_email']);
+                    $newsletter_date = date('d-m-y');
+                    $newsletter_sql = "INSERT INTO `newsletter`(`newsletter_id`, `newsletter_email`, `newsletter_date`) VALUES (NULL,'$newsletter_email','$newsletter_date')";
+                    $newsletter_query_results = query($newsletter_sql);
+                    confirmQuery($newsletter_query_results);
+                }
+            }
+        ?>
+
         <div class="colorlib-footer">
             <h1 id="colorlib-logo" class="mb-4"><a href="/cms/index" style="background-image: url(/cms/images/bg1.jpg);">Allan
                     <span>Koech</span></a></h1>
             <div class="mb-4">
                 <h3>Subscribe to the newsletter</h3>
-                <form action="#" class="colorlib-subscribe-form">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="colorlib-subscribe-form" method="post">
                     <div class="form-group d-flex">
-
-                        <input type="text" class="form-control" placeholder="Enter Email Address">
-                        <button type="submit" class="icon btn btn-outline"><span class="icon-paper-plane"></span></button>
+                        <input type="email" class="form-control" placeholder="Enter Email Address" name="newsletter_email">
+                        <button type="submit" class="icon btn btn-outline" name="newsletter_submit"><span
+                                    class="icon-paper-plane"></span></button>
                     </div>
                 </form>
             </div>

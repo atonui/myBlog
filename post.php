@@ -17,6 +17,10 @@ include 'includes/header.php';
 
                                 confirmQuery($views_results);
 
+                                $comment_count_query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+                                $comment_count = mysqli_query($connection, $comment_count_query);
+                                $post_comment_count = mysqli_num_rows($comment_count);
+
                                 $sql = "SELECT * FROM posts WHERE post_id = $post_id";
 
                                 $results = mysqli_query($connection, $sql);
@@ -69,6 +73,8 @@ include 'includes/header.php';
                             <!--                End of articles-->
                         </div>
                         <!--                    Comments-->
+                        <div class="pt-5 mt-5">
+                            <h3 class="mb-5 font-weight-bold"><?php echo $post_comment_count; ?> Comments</h3>
 
                         <?php
                         // inserting comments to db
@@ -91,34 +97,7 @@ include 'includes/header.php';
                             }
                         }
                         ?>
-                        <h6>Leave us a comment below...</h6>
-                        <div class="row block-9">
-                            <div class="col-lg-12">
-                                <form action="/cms/post/<?php echo $_GET['p_id'] ?>" class="bg-light p-5 contact-form"
-                                      method="post">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Name"
-                                               name="comment_author" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Email"
-                                               name="comment_email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="comment_content" id="" cols="30" rows="7" class="form-control"
-                                                  placeholder="Comment"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary py-3 px-5" name="create_comment">
-                                        Submit
-                                    </button>
-                                </form>
-
-                            </div>
-
-                        </div>
-                        <hr>
-                        <!--                    End Commenting feature-->
-<!--                        Begin comments-->
+                        <!--                        Begin comments-->
                         <?php
                         if (isset($_GET['p_id'])) {
                             $post_id = $_GET['p_id'];
@@ -136,21 +115,54 @@ include 'includes/header.php';
                                 ?>
 
                                 <!-- Comment -->
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h6 class="media-heading"><?php echo $comment_author ?>
-                                            <small><?php echo date("F jS, Y", strtotime($comment_date)) ?></small>
-                                        </h6>
+                                <ul class="comment-list">
+                                    <li class="comment">
+                                        <div class="comment-body">
+                                            <h3><?php echo $comment_author ?></h3>
+                                            <div class="meta"><?php echo date("F jS, Y", strtotime($comment_date)) ?></div>
+                                            <p><?php echo $comment_content; ?></p>
+                                            <p><a href="#" class="reply">Reply</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
 
-                                        <?php echo $comment_content; ?>
-                                    </div>
-                                </div>
-                                <hr>
 
                                 <?php
                             }
                         }
                         ?>
+                            <!-- END comment-list -->
+
+
+                            <div class="comment-form-wrap pt-5">
+                                <h3 class="mb-5">Leave a comment</h3>
+                                <form action="/cms/post/--><?php echo $_GET['p_id'] ?>" class="p-3 p-md-5 bg-light" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Name *</label>
+                                        <input type="text" class="form-control" id="name" name="comment_author">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="comment_email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea name="comment_content" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary" name="create_comment">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <hr>
+                        </div>
+
+
+
+
+                        <!--                    End Commenting feature-->
+
                     </div>
 <!--                    End comments-->
                     </div>

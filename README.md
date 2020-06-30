@@ -1,1 +1,1 @@
-# A redesign of my personal blog, kibetkoech.com
+# A redesign of my personal blog, www.kibetkoech.com
